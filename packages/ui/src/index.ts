@@ -1,0 +1,1 @@
+export const helloFromUI = "Hello from UI!";
