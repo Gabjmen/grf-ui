@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@grf-ui/engine": ["packages/engine/src/index.ts"],
+      "@grf-ui/headless": ["packages/headless/src/index.ts"]
+    }
+  }
+}

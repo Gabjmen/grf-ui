@@ -1,12 +1,12 @@
-import { LitElement, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { declareElement, GrfElement } from "@grf-ui/engine";
 
-@customElement("grf-button")
-export class GrfButton extends LitElement {
-  @property({ type: String })
-  accessor btnTitle: string = '';
+@declareElement("grf-button")
+export class GrfButton extends GrfElement {
+  public override onInit(): void {
+    console.log("init test");
+  }
 
-  protected override render() {
-    return html`<button>${this.btnTitle}</button>`;
+  public override onDestroy(): void {
+    console.log("destroy test");
   }
 }
