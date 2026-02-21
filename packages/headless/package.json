@@ -5,10 +5,10 @@
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "dependencies": {
-    "@grf-ui/engine": "*",
-    "lit": "^3.3.2"
+    "@grf-ui/engine": "*"
   }
 }

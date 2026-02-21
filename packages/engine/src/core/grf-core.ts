@@ -1,4 +1,6 @@
 export class GrfElement extends HTMLElement {
+  public html: string = ``;
+
   /**
    * Constructor.
    */
@@ -6,7 +8,21 @@ export class GrfElement extends HTMLElement {
     super();
   }
 
-  public onInit(): void {}
+  /**
+   * Attach a shadow root.
+   * @param customElemet
+   */
+  public attachShadowDom() {
+    if (this.shadowRoot) return;   
+    this.attachShadow({ mode: "open" });
+  }
+
+  public onInit(): void {
+    console.log('HTML value: ', this.html);
+    if (this.shadowRoot && this.shadowRoot.childNodes.length === 0) {
+      this.shadowRoot.innerHTML = this.html;
+    }
+  }
 
   public onDestroy(): void {}
 
@@ -17,4 +33,8 @@ export class GrfElement extends HTMLElement {
   disconnectedCallback() {
     this.onDestroy();
   }
+}
+
+export function isReadyForSSR(): boolean {
+  return typeof window !== "undefined" && typeof customElements != "undefined";
 }
