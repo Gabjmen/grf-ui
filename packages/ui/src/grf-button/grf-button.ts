@@ -24,6 +24,8 @@ export class GrfButton extends GrfButtonHeadless {
     this.shadowRoot!.adoptedStyleSheets = [tokenSheet, sheet];
     this.html = `${htmlContent}`;
 
+    this.addToMetadata(htmlContent, cssContent);
+
     super.onInit();
   }
 

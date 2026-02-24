@@ -1,0 +1,13 @@
+{
+  "name": "@grf-ui/ssr",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "dotnet build -c Release",
+    "test": "dotnet test",
+    "dev": "dotnet watch run",
+    "clean": "dotnet clean && rd /s /q bin obj"
+  },
+  "dependencies": {
+    "@grf-ui/ui": "*"
+  }
+}
