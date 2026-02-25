@@ -1,5 +1,8 @@
+import { jsonComponentCollection } from "./grf-ssr";
+
 export class GrfElement extends HTMLElement {
   public html: string = ``;
+  public parent: ParentNode | null = null;
 
   /**
    * Constructor.
@@ -13,18 +16,22 @@ export class GrfElement extends HTMLElement {
    * @param customElemet
    */
   public attachShadowDom() {
-    if (this.shadowRoot) return;   
+    if (this.shadowRoot) return;
     this.attachShadow({ mode: "open" });
   }
 
   public addToMetadata(htmlContent: string, cssContent: string): void {
-    const json = JSON.stringify(`<style>${cssContent}</style> ${htmlContent}`);
-    jsonComponentCollection.push(json);
+    const name = "grf-button";
+    const content = `<style>${cssContent}</style>\n${htmlContent}`;
+    jsonComponentCollection.push({
+      name: name,
+      content: content,
+    });
     console.log(jsonComponentCollection);
   }
 
   public onInit(): void {
-    console.log('HTML value: ', this.html);
+    console.log("HTML value: ", this.html);
     if (this.shadowRoot && this.shadowRoot.childNodes.length === 0) {
       this.shadowRoot.innerHTML = this.html;
     }
@@ -42,11 +49,5 @@ export class GrfElement extends HTMLElement {
 }
 
 // Globals START
-
-var jsonComponentCollection: string[] = [];
-
-export function isReadyForSSR(): boolean {
-  return typeof window !== "undefined" && typeof customElements != "undefined";
-}
 
 // Globals END

@@ -1,4 +1,4 @@
-import { isReadyForSSR } from "./grf-core";
+import { isReadyForSSR } from "./grf-ssr";
 
 /**
  * Use this decorator to define the custom elements you create.

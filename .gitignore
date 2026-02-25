@@ -39,3 +39,4 @@ yarn-error.log*
 /.vscode
 /packages/ssr/bin
 /packages/ssr/obj
+/packages/ssr/.idea
