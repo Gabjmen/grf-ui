@@ -30,11 +30,9 @@ export class GrfElement extends HTMLElement {
       name: name,
       content: content,
     });
-    console.log(jsonComponentCollection);
   }
 
   public onInit(): void {
-    console.log("HTML value: ", this.html);
     if (this.shadowRoot && this.shadowRoot.childNodes.length === 0) {
       this.shadowRoot.innerHTML = this.html;
     }
