@@ -16,7 +16,10 @@ export class GrfElement extends HTMLElement {
    * @param customElemet
    */
   public attachShadowDom() {
-    if (this.shadowRoot) return;
+    if (this.shadowRoot) {
+      console.log("Hydrating exisitng Shadow DOM")
+      return;
+    }
     this.attachShadow({ mode: "open" });
   }
 

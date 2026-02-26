@@ -2,7 +2,7 @@
 
 import { GrfHtmlElement } from "../models/grfHtmlElement";
 
-var uri = "http://localhost:5186/api/grfui/get-ssr-elements";
+var uri = "http://localhost:5186/api/ssrengine/get-ssr-elements";
 
 // Locals END
 

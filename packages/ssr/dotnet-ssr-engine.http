@@ -1,6 +1,6 @@
 @dotnet_ssr_engine_HostAddress = http://localhost:5186
 
-POST {{dotnet_ssr_engine_HostAddress}}/api/grfui/get-ssr-elements?htmlElement=null
+POST {{dotnet_ssr_engine_HostAddress}}/api/ssrengine/get-ssr-elements?htmlElement=null
 Accept: application/json
 
 ###
