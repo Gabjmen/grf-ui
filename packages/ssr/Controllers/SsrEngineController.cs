@@ -1,5 +1,5 @@
-using dotnet_ssr_engine.Interfaces;
 using dotnet_ssr_engine.Models;
+using dotnet_ssr_engine.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_ssr_engine.Controllers
@@ -8,9 +8,9 @@ namespace dotnet_ssr_engine.Controllers
     [ApiController]
     public class SsrEngineController : ControllerBase
     {
-        private readonly ISsrEngineService _service;
+        private readonly SsrEngineService _service;
 
-        public SsrEngineController(ISsrEngineService service)
+        public SsrEngineController(SsrEngineService service)
         {
             _service = service;
         }
@@ -18,7 +18,7 @@ namespace dotnet_ssr_engine.Controllers
         [HttpPost("get-ssr-elements")]
         public List<GrfHtmlElement> GetSsrReadyElement([FromBody] List<GrfHtmlElement> htmlElement)
         {
-            return _service.AddDeclarativeShadowDomToElement(htmlElement);
+            return null;
         }
     }
 }

@@ -1,7 +1,7 @@
 import { DeclareElement } from "@grf-ui/engine";
 import { GrfButtonHeadless } from "@grf-ui/headless";
-import htmlContent from './grf-button.html';
-import cssContent from './grf-button.css';
+import htmlContent from "./grf-button.html";
+import cssContent from "./grf-button.css";
 import { injectTokens, tokenSheet } from "@grf-ui/tokens";
 import { getSsrElement } from "@grf-ui/engine";
 
@@ -21,21 +21,20 @@ export class GrfButton extends GrfButtonHeadless {
     sheet.replaceSync(cssContent);
 
     injectTokens(this.shadowRoot!);
-
     this.shadowRoot!.adoptedStyleSheets = [tokenSheet, sheet];
+    
     this.html = `${htmlContent}`;
 
     this.addToMetadata(htmlContent, cssContent);
+    getSsrElement();
 
     this.parent = this.parentNode;
-    this.parent?.addEventListener("click", this.onClick)
+    this.parent?.addEventListener("click", this.onClick);
 
     super.onInit();
   }
 
-  protected onClick() {
-    getSsrElement();
-  }
+  protected onClick() {}
 
   public override onDestroy(): void {
     super.onDestroy();

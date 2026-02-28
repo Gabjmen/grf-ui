@@ -1,0 +1,18 @@
+.main-container {
+  display: inline-block;
+}
+button {
+  background-color: rgb(58, 48, 188);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  box-shadow: 8px 3px 3px rgb(36, 36, 36);;
+  filter: brightness(1.2);
+}

@@ -14,7 +14,7 @@
     }
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node ./src/scripts/extract-metadata.mjs",
     "dev": "tsup --watch"
   },
   "dependencies": {

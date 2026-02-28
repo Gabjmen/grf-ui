@@ -28,12 +28,12 @@ const gammaRayTokens = `
     --grf-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
     --grf-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --grf-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
 
-    @keyframes gr-ionize {
-      0% { left: -100%; opacity: 0; }
-      50% { opacity: 0.5; }
-      100% { left: 100%; opacity: 0; }
-    }
+  @keyframes gr-ionize {
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { left: 100%; opacity: 0; }
   }
 `;
 

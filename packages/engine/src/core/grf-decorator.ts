@@ -15,12 +15,7 @@ export function DeclareElement(
     if (isReadyForSSR()) {
       if (!customElements.get(elementName)) {
         customElements.define(elementName, constructor);
-        console.log(
-          `Defined this component: ${elementName}, ${constructor.name}`,
-        );
       }
-    } else {
-      console.log(`Skipping registration for ${elementName} (SSR/Node environment)`);
     }
   };
 }

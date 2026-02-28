@@ -40,3 +40,4 @@ yarn-error.log*
 /packages/ssr/bin
 /packages/ssr/obj
 /packages/ssr/.idea
+packages/ssr/Folder.DotSettings.user

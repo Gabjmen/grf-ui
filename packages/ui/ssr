@@ -1,0 +1,7 @@
+[
+  {
+    "name": "grf-button",
+    "html": "<button part=base><slot></slot></button>",
+    "css": ":host {\n  display: inline-block;\n}\nbutton {\n  background-color: var(--grf-color-primary);\n  color: var(--grf-clr-text-main);\n  padding: 8px 16px;\n  border: none;\n  border-radius: var(--grf-border-radius-md);\n  cursor: pointer;\n  font-family: var(--grf-font-family);\n  font-size: var(--grf-font-size-small);\n  transition: var(--grf-transition-std);\n}\nbutton:hover {\n  box-shadow: var(--grf-glow-primary);\n  filter: brightness(1.2);\n}\n"
+  }
+]

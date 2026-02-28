@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { TestButton } from '../test-button/test-button';
+
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [TestButton],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
