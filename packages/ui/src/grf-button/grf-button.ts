@@ -14,25 +14,22 @@ export class GrfButton extends GrfButtonHeadless {
   }
 
   public override onInit(): void {
-    this.attachShadowDom();
+    // These are not needed if using SSR
+    // this.attachShadowDom();
 
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(cssContent);
+    // const sheet = new CSSStyleSheet();
+    // sheet.replaceSync(cssContent);
 
-    injectTokens(this.shadowRoot!);
-    this.shadowRoot!.adoptedStyleSheets = [tokenSheet, sheet];
-    
-    this.html = `${htmlContent}`;
+    // injectTokens(this.shadowRoot!);
+    // this.shadowRoot!.adoptedStyleSheets = [tokenSheet, sheet];
 
-    this.addToMetadata(htmlContent, cssContent);
+    // this.html = `${htmlContent}`;
 
-    this.parent = this.parentNode;
-    this.parent?.addEventListener("click", this.onClick);
+    // this.parent = this.parentNode;
+    // this.parent?.addEventListener("click", this.onClick);
 
     super.onInit();
   }
-
-  protected onClick() {}
 
   public override onDestroy(): void {
     super.onDestroy();

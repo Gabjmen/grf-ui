@@ -1,5 +1,3 @@
-import { jsonComponentCollection } from "./grf-ssr";
-
 export class GrfElement extends HTMLElement {
   public html: string = ``;
   public parent: ParentNode | null = null;
@@ -13,23 +11,28 @@ export class GrfElement extends HTMLElement {
 
   /**
    * Attach a shadow root.
-   * @param customElemet
    */
   public attachShadowDom() {
     if (this.shadowRoot) {
-      console.log("Hydrating exisitng Shadow DOM")
+      console.log("Hydrating exisitng Shadow DOM");
       return;
     }
     this.attachShadow({ mode: "open" });
   }
 
-  public addToMetadata(htmlContent: string, cssContent: string): void {
-    const name = "grf-button";
-    const content = `<style>${cssContent}</style>\n${htmlContent}`;
-    jsonComponentCollection.push({
-      name: name,
-      content: content,
-    });
+  /**
+   * This is a wrapper for `dispatchEvent`.
+   * @param name the name of the event.
+   * @param detail the event itself.
+   */
+  public emit(name: string, detail: unknown) {
+    this.dispatchEvent(
+        new CustomEvent(name, {
+          detail,
+          bubbles: true,
+          composed: true,
+        }),
+      );
   }
 
   public onInit(): void {

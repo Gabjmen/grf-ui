@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { TestButton } from '../test-button/test-button';
 
-
 @Component({
   selector: 'app-root',
   imports: [TestButton],
@@ -12,4 +11,8 @@ import { TestButton } from '../test-button/test-button';
 })
 export class App {
   protected readonly title = signal('demo');
+
+  onClick($event: Event) {
+    console.log('Button has been clicked!');
+  }
 }
