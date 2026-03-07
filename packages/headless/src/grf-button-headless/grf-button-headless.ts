@@ -2,7 +2,7 @@ import { GrfElement } from "@grf-ui/engine";
 
 export class GrfButtonHeadless extends GrfElement {
   protected grfClick(event: Event) {
-    
+    console.log(event); // To make tsc shut up.
   }
 
   protected attachEvents() {

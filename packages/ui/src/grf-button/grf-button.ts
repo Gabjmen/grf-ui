@@ -15,18 +15,27 @@ export class GrfButton extends GrfButtonHeadless {
 
   public override onInit(): void {
     // These are not needed if using SSR
-    // this.attachShadowDom();
 
-    // const sheet = new CSSStyleSheet();
-    // sheet.replaceSync(cssContent);
+    if (!this.isSsr) {
+      this.attachShadowDom();
+    }
 
-    // injectTokens(this.shadowRoot!);
-    // this.shadowRoot!.adoptedStyleSheets = [tokenSheet, sheet];
+    // This is only needed in development for hot-reload of the styles.
+    if (DEV_ENV) {
+      this.hydrateStyles();
+    }
 
-    // this.html = `${htmlContent}`;
+    if (!this.isSsr) {
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(cssContent);
+      injectTokens(this.shadowRoot!);
+      this.shadowRoot!.adoptedStyleSheets = [tokenSheet, sheet];
+    }
 
-    // this.parent = this.parentNode;
-    // this.parent?.addEventListener("click", this.onClick);
+    // No SSR served html? Add it on the client.
+    if (this.shadowRoot!.childNodes.length === 0) {
+      this.shadowRoot!.innerHTML = `${htmlContent}`;
+    }
 
     super.onInit();
   }

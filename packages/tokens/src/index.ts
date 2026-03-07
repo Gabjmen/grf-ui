@@ -1,7 +1,7 @@
 const gammaRayTokens = `
   :root {
-    --grf-color-primary: #7C3AED;
-    --grf-color-secondary: #06B6D4;
+    --grf-color-primary: #000029;
+    --grf-color-secondary: #EBEBFF;
     --grf-color-background: #0F172A;
     --grf-color-surface: #1E293B;
     --grf-color-error: #ff4d4d;
@@ -50,4 +50,8 @@ export function injectTokens(shadowRoot?: ShadowRoot) {
       tokenSheet,
     ];
   }
+}
+
+export function setTheme() {
+  
 }

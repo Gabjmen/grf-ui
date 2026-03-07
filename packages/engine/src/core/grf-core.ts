@@ -1,23 +1,34 @@
+// Globals START
+
+declare global {
+  const DEV_ENV: boolean;
+}
+
+// Globals END
+
 export class GrfElement extends HTMLElement {
-  public html: string = ``;
   public parent: ParentNode | null = null;
+  public isSsr: boolean = false;
 
   /**
    * Constructor.
    */
   constructor() {
     super();
+
+    // If shadowRoot exists it means the component was SSR'ed.
+    if (this.shadowRoot) {
+      this.isSsr = true;
+    }
   }
 
   /**
    * Attach a shadow root.
    */
   public attachShadowDom() {
-    if (this.shadowRoot) {
-      console.log("Hydrating exisitng Shadow DOM");
-      return;
+    if (!this.shadowRoot) {
+      this.attachShadow({ mode: "open" });
     }
-    this.attachShadow({ mode: "open" });
   }
 
   /**
@@ -27,19 +38,26 @@ export class GrfElement extends HTMLElement {
    */
   public emit(name: string, detail: unknown) {
     this.dispatchEvent(
-        new CustomEvent(name, {
-          detail,
-          bubbles: true,
-          composed: true,
-        }),
-      );
+      new CustomEvent(name, {
+        detail,
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
-  public onInit(): void {
-    if (this.shadowRoot && this.shadowRoot.childNodes.length === 0) {
-      this.shadowRoot.innerHTML = this.html;
+  /**
+   * Prevents styles duplication by removing the SSR injected styles when client-side adoptedStyleSheets are applied.
+   */
+  protected hydrateStyles() {
+    if (this.isSsr && this.shadowRoot) {
+      const ssrStyles = this.shadowRoot.querySelectorAll("style");
+      ssrStyles.forEach((x) => x.remove());
+      this.isSsr = false;
     }
   }
+
+  public onInit(): void {}
 
   public onDestroy(): void {}
 
@@ -51,7 +69,3 @@ export class GrfElement extends HTMLElement {
     this.onDestroy();
   }
 }
-
-// Globals START
-
-// Globals END
